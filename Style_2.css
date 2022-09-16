@@ -1,0 +1,298 @@
+body {
+	background-image: url("bg.png");
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-attachment: fixed;
+}
+
+.full {
+	width: 100%;
+	max-width: 900px;
+	position: relative;
+	margin: 0 auto;
+}
+
+.corner {
+	position: aboslute;
+	top: 0;
+	right: 0;
+	margin-right: 0;
+	margin-left: auto;
+	background-color: rgba(22, 44, 65,0.7);
+	width: fit-content;
+	height: fit-content;
+}
+
+.link{
+	text-decoration: none;
+}
+
+.corner ul {
+	display: flex;
+	font-size: 10px;
+	margin: 0;
+	padding: 0px 3px;
+	list-style-type: none;
+}
+
+.corner li.item {
+	padding: 3px 6px;
+}
+
+.corner li.separator {
+	border-left: 1px solid rgb(165, 203, 252);
+	height: 10px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+.corner ul li a {
+	color: white;
+}
+
+.corner a:hover{
+	transition: all;
+	font-weight: bold;
+}
+
+.main {
+	position: relative;
+}
+
+.logo {
+	height: fit-content;
+	position: absolute;
+	top: 0;
+	left: 15px;
+	z-index: 3;
+}
+
+.boxout {
+	position: absolute;
+	background-color: rgba(15, 31, 54, 0.9);
+	width: 100%;
+	top: 38px;
+	padding: 4px;
+	height: fit-content;
+}
+
+.boxin {
+	border: 1px solid rgb(63, 80, 100);
+	height: fit-content;
+	width: 100%;
+	padding: 10px 0px;
+}
+
+.mainNav {
+	display: flex;
+	justify-content: right;
+}
+
+.mainNav ul.navs {
+	display: flex;
+	font-size: 16px;
+	margin: 0px;
+	list-style-type: none;
+}
+
+.mainNav li.item {
+	padding: 5px 18px;
+}
+
+.mainNav li.separator {
+	border-left: 1px solid white;
+	height: 14px;
+	margin-top: 11px;
+}
+
+.mainNav ul li a {
+	color: rgb(192, 217, 239);
+}
+
+.mainNav ul li.active {
+	border-radius: 4px;
+	background-color: rgb(72, 104, 129);
+	font-weight: bold;
+}
+
+.mainNav ul li.active a{
+	color: rgb(255, 255, 255);
+}
+
+.mainNav a:hover{
+	border-radius: 4px;
+	font-weight: bold;
+	background-color: rgb(72, 104, 129);
+	transition: .5s;
+}
+
+.home {
+	position: absolute;
+	top: 102px;
+	width: 100%;
+	padding-top: 35px;
+	padding-left: 30px;
+	padding-right: 30px;
+	padding-bottom: 25px;
+	color: white;
+	background-color: rgba(22, 44, 68, 0.25);
+}
+
+.title {
+	font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+	letter-spacing: 10px;
+	font-weight: normal;
+}
+
+.out {
+	position: absolute;
+	top: 266px;
+	padding: 4px;
+	width: 100%;
+	background-color: rgba(15, 31, 54, 0.9);
+}
+
+.content{
+	padding: 11px;
+	color: white;
+	font-size: 14px;
+	border: 1px solid rgb(63, 80, 100);
+	border-top: none;
+}
+
+.row >*{
+	padding: 15px;
+}
+
+.content img{
+	margin-bottom: 20px;
+	max-width: 100%;
+	max-height: 100%;
+}
+
+.content div a{
+	color: rgb(192, 217, 239);
+}
+
+.content a:hover{
+	transition: all;
+	font-weight: bold;
+}
+
+.ourServices{
+	position: relative;
+	top: 142px;
+	padding: 4px;
+	width: 100%;
+	background-color: rgba(15, 31, 54, 0.9);
+}
+
+.ourServices .row {
+	padding: 11px;
+	font-size: 14px;
+	border: 1px solid rgb(63, 80, 100);
+	border-top: none;
+
+}
+
+.ourServices .row .left img{
+	padding: 5px 10px 20px 10px;
+	max-width: 100%;
+}
+
+.leftBelow{
+	padding: 10px;
+	border-top: 1px solid rgb(90, 106, 129);
+	border-bottom: 1px solid rgb(90, 106, 129);
+}
+
+.leftBelow a{
+	color: rgb(204, 221, 236);
+}
+
+.leftBelow a:hover{
+	transition: all;
+	font-weight: bold;
+}
+
+.ourServices .row .right {
+	color: white;
+}
+
+.ourServices .row .subTitle {
+	color: rgb(204, 221, 236);
+	font-size: 20px;
+	font-weight: 550;
+
+}
+
+.right .help {
+	padding: 20px 30px;
+	border-top: 1px solid rgb(90, 106, 129);
+	border-bottom: 1px solid rgb(90, 106, 129);
+	background-color: rgb(16, 34, 58);
+}
+
+.help button {
+	color: rgb(191, 231, 255);
+	margin-top: 10px;
+	border-radius: 4px;
+	background-image: linear-gradient(rgb(44, 96, 117),rgb(1, 37, 59));
+	border:thin solid rgb(58, 93, 115);
+}
+
+button .arrow {
+	color: white;
+	font-weight: 700;
+	padding-left: 4px;
+}
+
+.oS {
+	position: absolute;
+	top: 700px;
+	width: 100%;
+	display: flex;
+	background-color: rgba(22, 44, 65,0.7);
+	padding: 5px;
+	justify-content: center;
+	color: rgb(160, 176, 210);
+}
+
+.oS a{
+	padding: 0px 5px;
+	color: white;
+}
+
+.oS a.separator {
+	padding: 0;
+}
+
+.oS a:hover{
+	transition: all;
+	font-weight: bold;
+}
+
+.footer {
+	position: absolute;
+	top: 820px;
+	width: 100%;
+	display:inline-flex;
+	background-color: rgba(22, 44, 65,0.7);
+	padding: 5px;
+	justify-content: center;
+	color: rgb(160, 176, 210);
+}
+
+.footer a{
+	padding: 0px 5px;
+	color: white;
+}
+
+.footer a.separator {
+	padding: 0;
+}
+
+.footer a:hover{
+	transition: all;
+	font-weight: bold;
+}
