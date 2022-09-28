@@ -6,13 +6,6 @@ function CareerReset(){
     document.getElementById("Submits").disabled= true;
 }
 
-/*document.getElementById("infile").onchange=function(event){value()};
-function value(event)
-{
-    document.getElementById("filename").value = document.getElementById("infile").value;
-}
-*/
-
 function mailValid(){
     var mail = document.getElementById("camail").value;
     var rmail= /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
@@ -30,14 +23,6 @@ function mailValid(){
 
 function CareerForm(){
     var details= true;
-    /*var ch = document.forms["career"].elements;
-    for(var i=0 ; i<ch.length; i++)
-    {
-        if(ch[i].value.length == 0)
-        {
-            details = false;
-        }
-    } */
     var cname = document.forms["career"]["Cname"].value;
     var cmail = document.forms["career"]["Cmail"].value;
     var crole = document.forms["career"]["role"].value;
