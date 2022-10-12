@@ -1,0 +1,308 @@
+body{
+    margin: 0%;
+	width: 100%;
+	max-width: 1600px;
+}
+
+.MainHeading
+{
+    background-color: #3399CC;
+    Font-family: Lucida Console, Courier New, monospace; 
+    height: 140px;
+}
+
+h1{
+	margin: 2;
+	float: left;
+	padding: 25px 15px;
+	font-size: 85px;
+	font-weight: 180;
+	color: white;
+}
+
+.NavigationTabs{
+	background-color: #333333;
+	overflow: hidden;
+	padding: 0px 10px;
+}
+
+.NavigationTabs ul{
+	list-style-type: none;
+	float: left;
+	padding: 0px 5px;
+}
+
+.NavigationTabs li{
+	position: relative;
+	display: inline;
+	padding: 10px 10px;
+}
+
+.NavigationTabs a{
+	text-decoration: none;
+	font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+	color: white;
+}
+
+.NavigationTabs li:hover{
+	background-color: orange;
+	border-left: 4px solid white;
+	color: black;
+	padding: 18px 8px;
+}
+
+.NavigationTabs li:hover a{
+	color: black;
+}
+
+.NavigationTabs li:has(a.OnActive){
+	background-color: orange;
+	border-left: 4px solid white;
+	color: black;
+	padding: 18px 8px;
+	transition: all;
+ }
+
+ a.OnActive{
+	color: black;
+}
+
+.NavigationTabs img.ImageAlign{
+    float: right;
+	padding: 14px;
+	border-radius: 20px;
+    position: relative;
+}
+
+.MainContent {
+	padding: 30px 50px;
+	font-family: Arial, Helvetica, sans-serif;
+	visibility: visible;
+}
+
+.MainContent .News{
+	border-style: groove;
+    border-width: thin;
+	padding: 10px;
+	width: fit-content;
+    line-height: 40px;
+}
+
+.MainContent .News h2{
+	margin: 0;
+}
+
+.MainContent .News ul {
+	margin: 0;
+	padding: 5px 15px;
+	list-style-type: '- ';
+}
+
+.MainContent .News ul li{
+
+	padding: 5px 10px;
+}
+
+.MainContent .SubContent {
+	max-width: fit-content;
+}
+
+#Welcome{
+    font-family: Arial, Helvetica, sans-serif; 
+    Font-size: 20px; 
+    Font-weight:Bold;
+    line-height: 30px;
+}
+
+/*careers*/
+
+.Description{
+	position: absolute;
+	left: 60px;
+	width: max-content;
+	margin: 2px;
+	padding: 8px;
+}
+
+.Description #HeadingFont{
+	font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+	color: grey;
+}
+
+.Description p{
+	font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.CareerForms{
+	position: absolute;
+	top: 360px;
+	left: 100px;
+	width: max-content;
+}
+
+.CareerForms .FieldText{
+	font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.CareerForms .FieldSpace{
+	position: relative;
+	left: 100px;
+}
+
+#RowGap{
+	position: relative;
+	top: 25px;
+}
+
+#RowGap2{
+	position: relative;
+	top: 50px;
+}
+
+#RowGap3{
+	position: relative;
+	top: 75px;
+}
+
+#FinalRowGap{
+	position: relative;
+	top: 70px;
+}
+
+.CareerForms .FieldBox{
+	height: 30px;
+}
+
+.Role{
+	height: 30px;
+	width: 170px;
+	padding: 2px;
+}
+
+.CareerForms .Required{
+	position: absolute;
+	top: 3px;
+	left: 400px;
+	color:red;
+}
+
+.ResumeRequired{
+	position: relative;
+	top: 3px;
+	left: 112px;
+	color:red;
+}
+
+#FileText{
+	font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+	position: relative;
+	top: 1px;
+	left: 1px;
+}
+
+.CareerForms label{
+	position: relative;
+	top: 1px;
+	left: 0px;
+	background-color: rgba(248, 247, 245, 0.918);
+	padding: 5px 12px;
+	font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+	border: 0.5px solid black;
+	border-radius: 2px;
+	cursor: pointer;
+}
+
+.CareerForms .SubmitBox{
+	height: 30px;
+	font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.CareerReset{
+	position: relative;
+	top:auto;
+	left: 70px;
+	height: 30px;
+	font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+
+/*Contact*/
+
+.ContactForm{
+	position: absolute;
+	top: 220px;
+	left: 350px;
+	width: max-content;
+	background-color: aliceblue;
+}
+
+.ContactForm tr{
+	position: relative;
+	top: 10px;
+	left: 100px;
+}
+
+.ContactForm .FieldText{
+	font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.ContactForm .FieldSpace{
+	position: relative;
+	right: 150px;
+	box-sizing: content-box;
+	width: max-content;
+}
+
+.ContactForm .FieldBox{
+	height: 25px;
+}
+
+.State{
+	height: 30px;
+	width: 171px;
+	padding: 2px;
+}
+
+#ParagraphStyle{
+	font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+	text-align: center;
+}
+
+.TextArea{
+	font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+	position: relative;
+	right: 10px;
+}
+
+#SubmitButton{
+	cursor: pointer;
+}
+
+.ResetBox{
+	position: relative;
+	right: 235px;
+	top: 1px;
+	height: 25px;
+	cursor: pointer;
+}
+
+.ContactForm span{
+	position: relative;
+	top: 10px;
+	left: 50px;
+	font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+	font-weight: bold;
+}
+
+.ContactForm .Required{
+	position: relative;
+	top: 10px;
+	right: 220px;
+	color:red;
+}
+
+.Error{
+	position: relative;
+	top: 8px;
+	right: 280px;
+}

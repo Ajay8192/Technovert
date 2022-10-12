@@ -1,0 +1,78 @@
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technovert</title>
+    <link rel="stylesheet" href="Index.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script type="text/javascript" src = "jQuery.js"></script>
+</head>
+<body>
+    <div class = "MainHeading">
+        <h1> TECHNOVERT </h1>
+    </div>
+    <div class= "NavigationTabs">
+        <ul>
+            <li><a href="Main.html">HOME</a></li>
+            <li><a href="#">SERVICES</a></li>
+            <li><a href="#" class="OnActive">CAREERS</a></li>
+            <li><a href="Contact.html">CONTACT</a></li>
+        </ul>
+        <img class= "ImageAlign" src = "bin_img.png">
+    </div>
+    <div class= "Description">
+        <h2 id="HeadingFont">Careers at Technovert</h2>
+        <p>We are looking for smart people who love fiddling with code and pour their heart into it. If you are one, we would like to talk to you. Please fill <br> the form below and we will get back to you. </p>
+    </div>
+    <div class="CareerForms">
+        <form name="Career" id="CareerForm">
+            <table>
+                <tr>
+                    <td class="FieldText">Name</td>
+                    <td class="FieldSpace"> 
+                        <input type="text" name="CareerName" class="FieldBox" id="CareerNames">
+                    </td>
+                    <td class="Required">*</td>
+                </tr>
+                <tr id="RowGap">
+                    <td class="FieldText">Email</td>
+                    <td class="FieldSpace"> 
+                        <input type="text" name="CareerMail" id="CareerMails" class="FieldBox">
+                    </td>
+                    <td class="Required">*</td>
+                </tr>
+                <tr id="RowGap2">
+                    <td class="FieldText"> Desired Role</td>
+                    <td class="FieldSpace"> 
+                        <select name = "CareerRole" id="CareerRoles" class="Role">
+                            <option value = "None" selected> None </option>
+                            <option value = "Software Developer"> Software Developer </option>
+                            <option value = "Data Scientist"> Data Scientist </option>
+                            <option value = "Data Analyst"> Data Analyst </option>
+                            <option value = "HR"> HR </option>
+                            <option value = "Marketing Specialist"> Marketing Specialist </option>
+                            <option value = "Technical Staff"> Techincal Staff </option>
+                        </select>
+                    </td>
+                    <td class="Required">*</td>
+                </tr>
+                <tr id="RowGap3">
+                    <td class="FieldText">Upload Resume</td>
+                    <td class="FieldSpace"> 
+                        <span id="FileText"></span>
+                        <input type="file" name="CareerFile" id="CareerFiles" hidden="Hidden">
+                        <label for="CareerFiles">Browse..</label>
+                    </td>
+                    <td class="ResumeRequired">*</td>
+                </tr>
+                <tr id="FinalRowGap">
+                    <td></td>
+                        <td class="FieldSpace"><br><br>
+                        <input type="submit" name="CareerSubmit" id="CareerSubmits" class="SubmitBox" Disabled="Disabled">
+                        <input type = "button" name= "CareerReset" value="Reset" class="CareerReset">
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</body>
+</html>
