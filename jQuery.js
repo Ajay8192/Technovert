@@ -81,8 +81,6 @@ $(document).ready(function(){
             localStorage.setItem("PromoTextStore", "");
             localStorage.setItem("TextArea1Store", "");
             localStorage.setItem("TextArea2Store", "");
-            localStorage.setItem("RadioGenderStore", 'unchecked');
-            localStorage.setItem("RadioContactByStore", 'unchecked');
         }
         else{
             //ContactLocalStorage
@@ -95,8 +93,6 @@ $(document).ready(function(){
             localStorage.setItem("PromoTextStore", $("#PromoResult").val());
             localStorage.setItem("TextArea1Store", $("#TextAreas").val());
             localStorage.setItem("TextArea2Store", $("#TextAreas2").val());
-            localStorage.setItem("RadioGenderStore", $(".Genders").val('checked'))
-            localStorage.setItem("RadioContactByStore", $(".ContactChoose").val('checked'))
         }
     }
 
@@ -118,8 +114,6 @@ $(document).ready(function(){
         var PromoText = localStorage.getItem("PromoTextStore");
         var TextArea1 = localStorage.getItem("TextArea1Store");
         var TextArea2 = localStorage.getItem("TextArea2Store");
-        var RadioGender = localStorage.getItem("RadioGenderStore");
-        var RadioContactBy = localStorage.getItem("RadioContactByStore");
         //Career
         if(CareerName !== "") 
             $("#CareerNames").val(CareerName);
@@ -149,22 +143,16 @@ $(document).ready(function(){
             $("#TextAreas").val(TextArea1);
         if(TextArea2 !== "")
             $("#TextAreas2").val(TextArea2);
-        if(RadioGender !== 'unchecked')
-            $(".Genders").val('checked')
-        if(RadioContactBy !== 'unchecked')
-            $(".ContactChoose").val('checked')
-        if(CareerName === "" || CareerMail === "" || CareerRole === "" || File === "" )//|| ContactName === "" || ContactMail === "" || ContactNumber === "" || ContactOrganization === "" || ContactCity === "" || ContactState === "None" || PromoText === "None" || TextArea1 === "" || TextArea2 === "") 
+        if(CareerName === "" || CareerMail === "" || CareerRole === "" || File === "" ) 
         {
             Details = false;
             $("#CareerSubmits").attr("Disabled", true);
-            //$("#SubmitButton").attr("Disabled", true);
         }
         if(Details)
         {
            $("#CareerSubmits").attr("Disabled", false);
-           //$("#SubmitButton").attr("Disabled", false);
         }
-        if(ContactName === "" || ContactMail === "" || ContactNumber === "" || ContactOrganization === "" || ContactCity === "" || ContactState === "None" || PromoText === "None" || TextArea1 === "" || TextArea2 === "" || RadioGender === 'unchecked' || RadioContactBy === 'unchecked'){
+        if(ContactName === "" || ContactMail === "" || ContactNumber === "" || ContactOrganization === "" || ContactCity === "" || ContactState === "None" || PromoText === "None" || TextArea1 === "" || TextArea2 === ""){
             ContactDetails = false;
             $("#SubmitButton").attr("Disabled", true);
         }
@@ -180,14 +168,13 @@ $(document).ready(function(){
 
 $(document).ready(function() {
     $("#ResetForm").click(function(){
-       // $("#ContactUs").get(0).reset();
         $("#ContactUs").trigger("reset");
         $("#ErrorMessage, #ContactNameError, #ContactMailError, #ContactOrganizationError").html("");
         $("#SubmitButton").attr("Disabled", true);
+        $("#Popup").css("visibility", "hidden");
     });
 
     $(".Genders").click(function(){
-        //var m = $('input[name = "gen"]:checked').val();
         var Gender = $(".Genders:checked").val();
         if(Gender == "Male"){
             alert("Hello Sir");
@@ -210,13 +197,13 @@ $(document).ready(function() {
         }
     });
 
-    $("#ContactUs").submit(function(){
-        var Details = true;
+    $("#ContactUs").submit(function(e){
+        var ContactDetails = true;
         var ContactName= $("#ContactNames").val();
         var ContactMail = $("#ContactMails").val();
         var ContactOrganization = $("#ContactOrganizations").val();
         if(ContactName == "" || ContactMail == "" || ContactOrganization == ""){
-            Details = false;
+            ContactDetails = false;
             $("#ErrorMessage").html("Please fill all the required fields below");
             $("#ErrorMessage").css("color", "red");
             $("#ContactNameError").html("Name is required");
@@ -226,11 +213,23 @@ $(document).ready(function() {
             $("#ContactOrganizationError").html("Organization is required");
             $("#ContactOrganizationError").css("color", "red");
         }
-        if(Details == false)
-        {
-            return false;
-        }
-        else{
+        if(ContactDetails){
+            e.preventDefault();
+            var ContactName = "Name: "+$("#ContactNames").val();
+            var ContactMail = "Mail: "+$("#ContactMails").val();
+            var ContactNumber = "Contact: "+$("#ContactNumbers").val();
+            var Gender = "Gender: "+ $(".Genders:checked").val();
+            var ContactOrganization = "Organization: "+ $("#ContactOrganizations").val();
+            var ContactCity = "City: "+ $("#ContactCities").val();
+            var ContactState = "State: "+ $("#ContactStates").val();
+            $("#Popup").css("visibility", "visible");
+            $("#NameField").html(ContactName);
+            $("#EmailField").html(ContactMail);
+            $("#ContactField").html(ContactNumber);
+            $("#GenderField").html(Gender);
+            $("#OrgField").html(ContactOrganization);
+            $("#CityField").html(ContactCity);
+            $("#StateField").html(ContactState);
             return true;
         }
     });
@@ -248,31 +247,57 @@ $(document).ready(function() {
         else{
             $("#ContactMails").focus(function(){
                 return true;
+                
             });
         }
     });
 
-    $("#ContactNames, #ContactMails, #ContactNumber, #ContactOrganizations, #ContactCity, #ContactStates, .Genders, .ContactChoose").on('keyup keyup keyup keyup keyup change click', function(){
-        var Details = true;
+    $("#ContactNames, #ContactMails, #ContactNumbers, #ContactOrganizations, #ContactCities, #ContactStates").on('keyup change', function(){
+        var ContactDetails = true;
         var ContactName = $("#ContactNames").val();
         var ContactMail = $("#ContactMails").val();
-        var ContactNumber = $("#ContactNumber").val();
+        var ContactNumber = $("#ContactNumbers").val();
         var ContactOrganization = $("#ContactOrganizations").val();
-        var ContactCity = $("#ContactCity").val();
+        var ContactCity = $("#ContactCities").val();
         var ContactStates = $("#ContactStates").val();
-        var IsGenderChecked = $(".Genders").val('checked');
-        var IsContactChose = $(".ContactChoose").val('checked');
         if(ContactName === "" || ContactMail === "" || ContactNumber === "" || ContactOrganization === "" || ContactCity === "" || ContactStates === "None")
         {
-            if(IsGenderChecked === 'unchecked' && IsContactChose === 'unchecked'){
-                Details = false;
+                ContactDetails = false;
                 $("#SubmitButton").attr("Disabled", true);
-            }
         }
-        if(Details)
+        if(ContactDetails)
         {
            $("#SubmitButton").attr("Disabled", false);
         }
     }); 
+
+    $("#Cancel").click(function(){
+        $("#Popup").css("visibility", "hidden");
+    });
     
+    $("#Ok").click(function(){
+        $("#ContactUs").submit(function(){
+            var ContactDetails = true;
+            var ContactName= $("#ContactNames").val();
+            var ContactMail = $("#ContactMails").val();
+            var ContactOrganization = $("#ContactOrganizations").val();
+            if(ContactName == "" || ContactMail == "" || ContactOrganization == ""){
+                ContactDetails = false;
+                $("#ErrorMessage").html("Please fill all the required fields below");
+                $("#ErrorMessage").css("color", "red");
+                $("#ContactNameError").html("Name is required");
+                $("#ContactNameError").css("color", "red");
+                $("#ContactMailError").html("E-mail is required");
+                $("#ContactMailError").css("color", "red");
+                $("#ContactOrganizationError").html("Organization is required");
+                $("#ContactOrganizationError").css("color", "red");
+            }
+            if(ContactDetails)
+                return true;
+        });
+        $("#Popup").css("visibility", "hidden");
+        $("#ContactUs").trigger("reset");
+        $("#SubmitButton").attr("Disabled", true);
+    });
+
 });
