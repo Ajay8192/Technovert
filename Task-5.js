@@ -156,6 +156,8 @@ function displayContactTile(clickTile){
     $("#GetFormAddress").html("Address: "+ clickTile.inputAddress);
 }
 
+//Delete particular contact tile 
+
 function deleteContactTile(){
     for(let i=0; i<details.length; i++)
     {
@@ -168,6 +170,7 @@ function deleteContactTile(){
     }
 }
 
+//Display Edit form option when clicked "Edit" on contact tile
 function openEditForm(){
     $("#AddName").val(clickTile.inputName);
     $("#AddMail").val(clickTile.inputMail);
@@ -181,6 +184,8 @@ function openEditForm(){
     $("#DetailsForm").css("visibility", "visible");
     $("#DisplayContent").css("visibility", "hidden"); 
 }
+
+//After clicking on edit option the details will get updated to the contact container 
 
 function updateDetails(){
      var editDetails = {
