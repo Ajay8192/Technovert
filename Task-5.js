@@ -1,5 +1,7 @@
 var details = JSON.parse(localStorage.getItem("formDetailsStore")), clickTile;
 
+//On click add button, form must be visible
+
 function formVisibility()
 {
     $(".ButtonBox").css("display", "none");
@@ -9,17 +11,23 @@ function formVisibility()
     $("#DisplayContent").css("visibility", "hidden");
 }
 
+//On click home button function
+
 function home(){
     $("#DetailsForm").css("visibility", "hidden");
     $("#DisplayContent").css("visibility", "hidden");
 }
 
+//On click close, the form should close
+
 function closeForm(){
     $("#DetailsForm").css("visibility", "hidden");
 }
 
+//Until the form is filled the add button and edit buttons are disabled
+
 function disableButton(){
-    var formDetails = true;
+    var filledFormDetails = true;
     var nameField = $("#AddName").val();
     var mailField = $("#AddMail").val();
     var mobileField = $("#AddMobile").val();
@@ -27,11 +35,11 @@ function disableButton(){
     var websiteField = $("#AddWebsite").val();
     var addressField = $("#AddAddress").val();
     if(nameField === "" || mailField === "" || mobileField === "" || landlineField === "" || websiteField === "" || addressField === ""){
-        formDetails = false;
+        filledFormDetails = false;
         $("#AddButton").attr('Disabled', true);
         $("EditButton").attr('Disabled', true);
     }
-    if(formDetails){
+    if(filledFormDetails){
         $("#AddButton").attr('Disabled', false);
         $("#EditButton").attr('Disabled', false);
     }
@@ -60,16 +68,18 @@ function detailsAdd(){
         }
         // Store
         localStorage.setItem("formDetailsStore", JSON.stringify(details));
+        console.log(details);
 
         //DisplayContactContainer function
         displayContactContainerAdd(formDetails);
+
     } 
     else {
         alert("Sorry, your browser does not support Web Storage");
     }
 }
 
-// Display contact container and make contact container available with its details
+// Make contact container available with its details
 
 function intialConfig(){
     details = JSON.parse(localStorage.getItem("formDetailsStore"));
@@ -82,10 +92,21 @@ $(document).ready(function(){
     intialConfig();
 });
 
-// Add contact details to the container when click on add button on the form 
+//After each addition of details. Add it in the contact container
 
 function displayContactContainerAdd(formDetails){
-    var display = `<div class="Display">
+    var arr= [];
+    var formDetails = {
+        inputName: $("#AddName").val(),
+        inputMail: $("#AddMail").val(),
+        inputMobile: $("#AddMobile").val(),
+        inputLandline: $("#AddLandline").val(),
+        inputWebsite: $("#AddWebsite").val(),
+        inputAddress: $("#AddAddress").val()
+    }
+    arr.push(formDetails);
+    console.log(arr);
+    var display = `<div class="Display" id=${arr[0].inputName.replace(/\s/g, "")}>
                             <span id="ShowName"></span>
                             <span id="ShowMail"></span>
                             <span id="ShowMobile"></span>
@@ -94,10 +115,21 @@ function displayContactContainerAdd(formDetails){
             displayContainer.find("#ShowName").html(formDetails.inputName)
             displayContainer.find("#ShowMail").html(formDetails.inputMail);
             displayContainer.find("#ShowMobile").html("+91 "+formDetails.inputMobile);
-            location.reload();
+
+            displayContainer.click(function(e){     
+                console.log(e);
+                let id = e.target.parentNode.id;
+                console.log(id);
+                clickTile = arr.find(c => c.inputName.replace(/\s/g, "") === id);
+                console.log(clickTile);  
+                $(".Display.active").removeClass("active");
+                $("#"+clickTile.inputName.replace(/\s/g, "")).addClass("active");
+                displayContactTile(clickTile);
+            });
+            $("#DetailsForm").css("visibility", "hidden");
 }
 
-//Make contact details persist in the container when refreshed
+//Display contact container
 
 function displayContactContainer(details){
         let i;
@@ -112,14 +144,12 @@ function displayContactContainer(details){
             displayContainer.find("#ShowMail").html(details[i].inputMail);
             displayContainer.find("#ShowMobile").html("+91 "+details[i].inputMobile);
 
-            //Function to show particular contact tile when clicked on the particular contact tile
-
             displayContainer.click(function(e){     
-                console.log(e);
                 let id = e.target.parentNode.id;
                 console.log(id);
                 console.log(clickTile);
-                clickTile = details.find(c => c.inputName.replace(/\s/g, "") === id); 
+                clickTile = details.find(c => c.inputName.replace(/\s/g, "") === id);
+                console.log(clickTile);
                 $(".Display.active").removeClass("active");
                 $("#"+clickTile.inputName.replace(/\s/g, "")).addClass("active");
                 displayContactTile(clickTile);
@@ -135,9 +165,9 @@ function displayContactTile(clickTile){
     $("#DisplayContent").css("visibility", "visible");   
     var  displayOnce = `<div class = "ImageAnchor">
                             <img src="Edit.png" class="EditImage">
-                            <a href="#" id="EditLink" onclick= openEditForm()>EDIT</a>
+                            <a href="#" class="EditLink" onclick= openEditForm()>EDIT</a>
                             <img src="delete1.png" class="DeleteImage">
-                            <a href="#" id="DeleteLink" onclick = deleteContactTile()>DELETE</a>
+                            <a href="#" class="DeleteLink" onclick = deleteContactTile()>DELETE</a>
                             <span id="GetFormName"></span>
                             <span id="GetFormMail"></span>
                             <span id="GetFormMobile"></span>
@@ -151,12 +181,12 @@ function displayContactTile(clickTile){
     $("#GetFormName").html(clickTile.inputName);
     $("#GetFormMail").html("Mail: "+ clickTile.inputMail);
     $("#GetFormMobile").html("Mobile: "+ "+91 "+clickTile.inputMobile);
-    $("#GetFormLandline").html("Landline: "+ "+040 "+clickTile.inputLandline);
+    $("#GetFormLandline").html("Landline: "+ "040 "+clickTile.inputLandline);
     $("#GetFormWebsite").html("Website: "+ clickTile.inputWebsite);
     $("#GetFormAddress").html("Address: "+ clickTile.inputAddress);
 }
 
-//Delete particular contact tile 
+// Delete the selected contact tile
 
 function deleteContactTile(){
     for(let i=0; i<details.length; i++)
@@ -170,7 +200,8 @@ function deleteContactTile(){
     }
 }
 
-//Display Edit form option when clicked "Edit" on contact tile
+//Open the edit form when edit button is clicked
+
 function openEditForm(){
     $("#AddName").val(clickTile.inputName);
     $("#AddMail").val(clickTile.inputMail);
@@ -185,7 +216,7 @@ function openEditForm(){
     $("#DisplayContent").css("visibility", "hidden"); 
 }
 
-//After clicking on edit option the details will get updated to the contact container 
+// On click Edit button, the details are updated in the local storage and contact container 
 
 function updateDetails(){
      var editDetails = {
@@ -196,8 +227,8 @@ function updateDetails(){
         inputWebsite: $("#AddWebsite").val(),
         inputAddress: $("#AddAddress").val()
     }
-    
-    for(let i =0; i<details.length; i++)
+
+    for(let i=0; i<details.length; i++)
     {
         if(details[i].inputName.replace(/\s/g, "") === clickTile.inputName.replace(/\s/g, "")){
             details[i].inputName = editDetails.inputName;
@@ -207,7 +238,7 @@ function updateDetails(){
             details[i].inputWebsite = editDetails.inputWebsite;
             details[i].inputAddress = editDetails.inputAddress;
             localStorage.setItem("formDetailsStore", JSON.stringify(details));
-            location.reload();
+            location.reload();//
             break;
         }
     }
